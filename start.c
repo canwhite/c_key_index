@@ -104,7 +104,6 @@ int main(void){
     Object* objects_2 = (Object*)calloc(n,sizeof(Object));
     for (int i = 0; i < n; i++)
     {
-        //todo
         char* temp_name = malloc(50*sizeof(char));
         strcpy(temp_name, "object_2_name");  // 你需要为这段内存提供一个初始字符串。
         //2）再初始化
@@ -148,15 +147,41 @@ int main(void){
     */
 
     //字符串复制上边已经讲了两种了，这里我们接着往下写
-    // char* s1 = "Hello";
-    // char* s2 = "World";
-    // char* s3 = strcat(s1,s2);
-    // printf("s3:%s",s3);
+    //如果这里不加size，就没有足够的空间拼接s2了
+    char s1[50] = "Hello";
+    char* s2 = "World";
+    //字符串指针要先给空间，再处理
+    char* s3 = (char*)malloc(100*sizeof(char));
+    s3 = strcat(s1,s2);
+    printf("s3 : %s \n",s3);
 
+    //可以在声明字符数组时不指定数组大小，
+    //而让编译器根据提供的初始化字符串计算实际的大小
+    //末尾的结束字符'\0'
+    char s4[] = "示例字符串";
+    int len = strlen(s4);
+    printf("s4 len : %d \n", len);
 
+    char s5[] = "Hello";
+    char s6[] = "World";
+    //等于0的时候相等
+    int result = strcmp(s5, s6);
+    printf("cmp result : %d \n", result);
 
+    char s7[] = "Example string";
+    char ch = 'r'; //注意这里是char，单引号
+    char *res1 = strchr(s7, ch);
+    //在C语言中， s1是一个指针，它指向一个字符数组（也就是字符串）的第一个字符。
+    //而 *s1是解引用指针s1后得到的字符
+    //总结：指针一定程度上可以理解为地址和引用
+    //C语言会自动解引用这个指针
+    printf("%s\n", res1);
 
-
+    
+    char s8[] = "Example string";
+    char s9[] = "str"; //注意这里是str，双引号
+    char *res2 = strstr(s8, s9);
+    printf("%s\n", res1);
 
 
     return 0 ; 
