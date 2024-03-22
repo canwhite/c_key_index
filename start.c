@@ -77,7 +77,7 @@ int main(void){
     //Pre: c语言常规设置数组的方法
     // type arrayName[arraySize];
 
-    //malloc
+    //malloc : memory allocation
     //只有一个参数是size
     //common部分
     int n = 5;
@@ -94,7 +94,7 @@ int main(void){
         printf("%s \n",objects_1[i].name);
     }
 
-    //calloc
+    //calloc: contiguous allocation
     /** calloc和malloc的最大区别
     malloc只分配区间，
     calloc在分配区间的同时，所有位都初始化为0
@@ -112,7 +112,7 @@ int main(void){
         printf("%s \n",objects_2[i].name);
     }
     
-    //realloc
+    //realloc: reallocate
     //使用realloc可以在原有的基础上扩大空间,用于实现动态数组
     //1）先分配内存
     objects_1 = (Object*)realloc(objects_1, 10*sizeof(Object));
