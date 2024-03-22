@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/zack/Desktop/c_key_index/build",
+  "command": "/usr/bin/clang -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/MyProject.dir/start.c.o -c /Users/zack/Desktop/c_key_index/start.c",
+  "file": "/Users/zack/Desktop/c_key_index/start.c",
+  "output": "CMakeFiles/MyProject.dir/start.c.o"
+},
+{
+  "directory": "/Users/zack/Desktop/c_key_index/build",
+  "command": "/usr/bin/clang -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/MyProject.dir/utils/utils.c.o -c /Users/zack/Desktop/c_key_index/utils/utils.c",
+  "file": "/Users/zack/Desktop/c_key_index/utils/utils.c",
+  "output": "CMakeFiles/MyProject.dir/utils/utils.c.o"
+}
+]

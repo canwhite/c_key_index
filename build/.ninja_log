@@ -1,0 +1,4 @@
+# ninja log v6
+1	47	1711107952365796602	CMakeFiles/MyProject.dir/utils/utils.c.o	9a55f74318f1e429
+1	55	1711107952365520603	CMakeFiles/MyProject.dir/start.c.o	25be4de2bacb3e33
+56	92	1711107952420070148	MyProject	da2d7b03ff697554
