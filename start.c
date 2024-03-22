@@ -63,8 +63,7 @@ int main(void){
     void (*ptr)(int) = &A;
     //传入的还是引用，然后内部实现的解引用
     B(ptr);
-
-    
+ 
     // --- malloc、calloc、realloc
 
     //Pre: c语言常规设置数组的方法
@@ -81,14 +80,18 @@ int main(void){
     //1）先分配空间
     Object* objects_1 = (Object*)malloc(n * sizeof(Object));
     for (int i = 0; i < n; i++)
-    {
+    {   
+        /** 
+        //a、先分配内存
         char* temp_name = malloc(50*sizeof(char));
-        strcpy(temp_name, "object_1_name");  // 你需要为这段内存提供一个初始字符串。
+        //b、往内存空间赋值，提供一个常量字符串，往分配好的内存空间copy，temp_name是头
+        strcpy(temp_name, "object_1_name");  
+        **/
+        //a、b等同于
+        char temp_name[50] = "object_1_name";
         //2）再初始化
         objects_1[i] = (*createObj)(i,temp_name);
         printf("%s \n",objects_1[i].name);
-
-
     }
 
     //calloc
@@ -100,11 +103,12 @@ int main(void){
     将n*sizeof分成了两块儿
     */
    
+    //1）先分配内存
     Object* objects_2 = (Object*)calloc(n,sizeof(Object));
     for (int i = 0; i < n; i++)
     {
         char* temp_name = malloc(50*sizeof(char));
-        strcpy(temp_name, "object_2_name");  // 你需要为这段内存提供一个初始字符串。
+        strcpy(temp_name, "object_2_name");  
         //2）再初始化
         objects_2[i] = (*createObj)(i,temp_name);
         printf("%s \n",objects_2[i].name);
@@ -113,11 +117,12 @@ int main(void){
     
     //realloc
     //使用realloc可以在原有的基础上扩大空间,用于实现动态数组
+    //1）先分配内存
     objects_1 = (Object*)realloc(objects_1, 10*sizeof(Object));
     for (int i = 5;  i < 10; i++)
     {
         char* temp_name = malloc(50*sizeof(char));
-        strcpy(temp_name, "object_1_name");  // 你需要为这段内存提供一个初始字符串。
+        strcpy(temp_name, "object_1_name");  
         //2）再初始化
         objects_1[i] = (*createObj)(i,temp_name);
         printf("%s \n",objects_1[i].name);
@@ -138,26 +143,25 @@ int main(void){
     free(objects_1);
     free(objects_2);
 
-
-    // --- string 
-    /** 使用字符串更好的方法是使用char数组
+        // --- string 
+    /** 
+    使用字符串更好的方法是使用char数组
     这样相当于提前分配了空间
     type name[size]
-    */
+    **/
 
-    //字符串复制上边已经讲了两种了，这里我们接着往下写
     /******************************************
+     * strcpy和strncpy，后者是内存安全的
+    //先分配内存
     char* s1 = (char*)malloc(50*sizeof(char));
     //常量不能修改
     char* hello = "hello";
-    // 我们实际上创建了s1的50个字节的内存空间，
-    // 然后使用strcpy把"hello"复制到了这个内存空间
+    //提供一个常量字符串，往分配好的内存空间copy，temp_name是空间头
     strcpy(s1, hello);
     ******************************************/
 
-    //以上三步 === char s1[50] = "hello";，
-    //而且这样没用malloc就不用释放了
-    //这个数组名s1，相当于指针(地址)
+    //以上三步 === char s1[50] = "hello";
+    //后者没用malloc就不用释放了，这个数组名s1，相当于指针(地址)
     //字符串比较特殊，输出的时候会自动解引用
     char s1[50] = "hello";
     char* s2 = "World";
@@ -202,6 +206,8 @@ int main(void){
     char s9[] = "str"; //注意这里是str，双引号
     char *res2 = strstr(s8, s9);
     printf("%s\n", res1);
+
+
 
 
     return 0 ; 
