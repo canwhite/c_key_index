@@ -29,6 +29,14 @@ Object createObject(int id, char* name){
     //先声明再初始化的过程
     Object obj;
     obj.id = id;
+    /** 
+    //a、先分配内存
+    char* temp_name = malloc(50*sizeof(char));
+    //b、往内存空间赋值，提供一个常量字符串，往分配好的内存空间copy，temp_name是头
+    strcpy(temp_name, "object_1_name");  
+    //以上a、b等同于 char temp_name[50] = "object_1_name";
+    **/
+    
     //如果字符串用的不是char strName[num]定义，而是用指针定义的，要先分配内存
     obj.name = malloc(50*sizeof(char));
     //strcpy没有第三个参数sizeof，不是内存安全的
@@ -81,16 +89,8 @@ int main(void){
     Object* objects_1 = (Object*)malloc(n * sizeof(Object));
     for (int i = 0; i < n; i++)
     {   
-        /** 
-        //a、先分配内存
-        char* temp_name = malloc(50*sizeof(char));
-        //b、往内存空间赋值，提供一个常量字符串，往分配好的内存空间copy，temp_name是头
-        strcpy(temp_name, "object_1_name");  
-        **/
-        //a、b等同于
-        char temp_name[50] = "object_1_name";
         //2）再初始化
-        objects_1[i] = (*createObj)(i,temp_name);
+        objects_1[i] = (*createObj)(i,"object_1_name");
         printf("%s \n",objects_1[i].name);
     }
 
@@ -107,12 +107,9 @@ int main(void){
     Object* objects_2 = (Object*)calloc(n,sizeof(Object));
     for (int i = 0; i < n; i++)
     {
-        char* temp_name = malloc(50*sizeof(char));
-        strcpy(temp_name, "object_2_name");  
         //2）再初始化
-        objects_2[i] = (*createObj)(i,temp_name);
+        objects_2[i] = (*createObj)(i,"object_2_name");
         printf("%s \n",objects_2[i].name);
-
     }
     
     //realloc
@@ -121,12 +118,8 @@ int main(void){
     objects_1 = (Object*)realloc(objects_1, 10*sizeof(Object));
     for (int i = 5;  i < 10; i++)
     {
-        char* temp_name = malloc(50*sizeof(char));
-        strcpy(temp_name, "object_1_name");  
-        //2）再初始化
-        objects_1[i] = (*createObj)(i,temp_name);
+        objects_1[i] = (*createObj)(i,"object_1_name");
         printf("%s \n",objects_1[i].name);
-
     }
 
     //释放堆内存
@@ -143,7 +136,7 @@ int main(void){
     free(objects_1);
     free(objects_2);
 
-        // --- string 
+    // --- string 
     /** 
     使用字符串更好的方法是使用char数组
     这样相当于提前分配了空间
@@ -152,21 +145,21 @@ int main(void){
 
     /******************************************
      * strcpy和strncpy，后者是内存安全的
-    //先分配内存
+    //a、先分配内存
     char* s1 = (char*)malloc(50*sizeof(char));
-    //常量不能修改
+    //b、常量不能修改
     char* hello = "hello";
-    //提供一个常量字符串，往分配好的内存空间copy，temp_name是空间头
+    //c、提供一个常量字符串，往分配好的内存空间copy，temp_name是空间头
     strcpy(s1, hello);
+
+    以a、b、c === char s1[50] = "hello";
+    //后者没用malloc就不用释放了，这个数组名s1，相当于指针(地址)
     ******************************************/
 
-    //以上三步 === char s1[50] = "hello";
-    //后者没用malloc就不用释放了，这个数组名s1，相当于指针(地址)
-    //字符串比较特殊，输出的时候会自动解引用
+    //字符串比较特殊，输出指针的时候会自动解引用
     char s1[50] = "hello";
     char* s2 = "World";
-    //字符串指针要先给空间，再处理
-    // 拓展s1
+    //字符串指针要先给空间，再处理，拓展s1
     strcat(s1,s2);
     // 在C语言中，数组名即是指针，也就是地址
     char* s3 = s1;
@@ -206,9 +199,6 @@ int main(void){
     char s9[] = "str"; //注意这里是str，双引号
     char *res2 = strstr(s8, s9);
     printf("%s\n", res1);
-
-
-
 
     return 0 ; 
 }
