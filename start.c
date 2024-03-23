@@ -118,6 +118,7 @@ int main(void){
     objects_1 = (Object*)realloc(objects_1, 10*sizeof(Object));
     for (int i = 5;  i < 10; i++)
     {
+        //往这个空间上值
         objects_1[i] = (*createObj)(i,"object_1_name");
         printf("%s \n",objects_1[i].name);
     }
