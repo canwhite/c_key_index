@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: MyProject
+# Project: App
 # Configurations: Debug
 # =============================================================================
 
@@ -41,41 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/zack/Desktop/c_key_index/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target MyProject
+# Object build statements for EXECUTABLE target App
 
 
 #############################################
-# Order-only phony target for MyProject
+# Order-only phony target for App
 
-build cmake_object_order_depends_target_MyProject: phony || CMakeFiles/MyProject.dir
+build cmake_object_order_depends_target_App: phony || CMakeFiles/App.dir
 
-build CMakeFiles/MyProject.dir/start.c.o: C_COMPILER__MyProject_unscanned_Debug /Users/zack/Desktop/c_key_index/start.c || cmake_object_order_depends_target_MyProject
-  DEP_FILE = CMakeFiles/MyProject.dir/start.c.o.d
+build CMakeFiles/App.dir/start.c.o: C_COMPILER__App_unscanned_Debug /Users/zack/Desktop/c_key_index/start.c || cmake_object_order_depends_target_App
+  DEP_FILE = CMakeFiles/App.dir/start.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  OBJECT_DIR = CMakeFiles/MyProject.dir
-  OBJECT_FILE_DIR = CMakeFiles/MyProject.dir
-
-build CMakeFiles/MyProject.dir/utils/utils.c.o: C_COMPILER__MyProject_unscanned_Debug /Users/zack/Desktop/c_key_index/utils/utils.c || cmake_object_order_depends_target_MyProject
-  DEP_FILE = CMakeFiles/MyProject.dir/utils/utils.c.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  OBJECT_DIR = CMakeFiles/MyProject.dir
-  OBJECT_FILE_DIR = CMakeFiles/MyProject.dir/utils
+  INCLUDES = -I/Users/zack/Desktop/c_key_index/utils
+  OBJECT_DIR = CMakeFiles/App.dir
+  OBJECT_FILE_DIR = CMakeFiles/App.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target MyProject
+# Link build statements for EXECUTABLE target App
 
 
 #############################################
-# Link the executable MyProject
+# Link the executable App
 
-build MyProject: C_EXECUTABLE_LINKER__MyProject_Debug CMakeFiles/MyProject.dir/start.c.o CMakeFiles/MyProject.dir/utils/utils.c.o
+build App: C_EXECUTABLE_LINKER__App_Debug CMakeFiles/App.dir/start.c.o | /Users/zack/Desktop/c_key_index/utils/libutil_static.a
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  OBJECT_DIR = CMakeFiles/MyProject.dir
+  LINK_LIBRARIES = /Users/zack/Desktop/c_key_index/utils/libutil_static.a
+  OBJECT_DIR = CMakeFiles/App.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = MyProject
-  TARGET_PDB = MyProject.dbg
+  TARGET_FILE = App
+  TARGET_PDB = App.dbg
 
 
 #############################################
@@ -112,7 +108,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/zack/Desktop/c_key_index/build
 
-build all: phony MyProject
+build all: phony App
 
 # =============================================================================
 # Built-in targets

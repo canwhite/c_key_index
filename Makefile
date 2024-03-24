@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyProject
+# Target rules for targets named App
 
 # Build rule for target.
-MyProject: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyProject
-.PHONY : MyProject
+App: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 App
+.PHONY : App
 
 # fast build rule for target.
-MyProject/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/build
-.PHONY : MyProject/fast
+App/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/build
+.PHONY : App/fast
 
 start.o: start.c.o
 .PHONY : start.o
 
 # target to build an object file
 start.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/start.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/start.c.o
 .PHONY : start.c.o
 
 start.i: start.c.i
@@ -142,7 +142,7 @@ start.i: start.c.i
 
 # target to preprocess a source file
 start.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/start.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/start.c.i
 .PHONY : start.c.i
 
 start.s: start.c.s
@@ -150,32 +150,8 @@ start.s: start.c.s
 
 # target to generate assembly for a file
 start.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/start.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/App.dir/build.make CMakeFiles/App.dir/start.c.s
 .PHONY : start.c.s
-
-utils/utils.o: utils/utils.c.o
-.PHONY : utils/utils.o
-
-# target to build an object file
-utils/utils.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/utils/utils.c.o
-.PHONY : utils/utils.c.o
-
-utils/utils.i: utils/utils.c.i
-.PHONY : utils/utils.i
-
-# target to preprocess a source file
-utils/utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/utils/utils.c.i
-.PHONY : utils/utils.c.i
-
-utils/utils.s: utils/utils.c.s
-.PHONY : utils/utils.s
-
-# target to generate assembly for a file
-utils/utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/utils/utils.c.s
-.PHONY : utils/utils.c.s
 
 # Help Target
 help:
@@ -185,13 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MyProject"
+	@echo "... App"
 	@echo "... start.o"
 	@echo "... start.i"
 	@echo "... start.s"
-	@echo "... utils/utils.o"
-	@echo "... utils/utils.i"
-	@echo "... utils/utils.s"
 .PHONY : help
 
 

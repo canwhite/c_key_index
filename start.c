@@ -1,8 +1,7 @@
 #include<stdio.h>
-#include "utils/utils.h"
 #include<stdlib.h>
 #include<string.h>
-
+#include "utils.h"
 
 
 //--FUNCTION--
@@ -199,7 +198,7 @@ int main(void){
     char s8[] = "Example string";
     char s9[] = "str"; //注意这里是str，双引号
     char *res2 = strstr(s8, s9);
-    printf("%s\n", res1);
+    print_message("3455");
 
     return 0 ; 
 }

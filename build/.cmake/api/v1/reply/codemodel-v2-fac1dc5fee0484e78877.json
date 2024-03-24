@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "MyProject",
+					"name" : "App",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "MyProject::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MyProject-Debug-3726f0545bffb3832988.json",
-					"name" : "MyProject",
+					"id" : "App::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-App-Debug-16cc6876d0332092bbff.json",
+					"name" : "App",
 					"projectIndex" : 0
 				}
 			]
