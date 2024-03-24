@@ -11,8 +11,6 @@ set(SOURCE_FILES utils.c)
 add_library(${LIB_NAME} ${SOURCE_FILES})
 
 # 设置.h为外部可见,TODO, 这个没起作用，所以从主文件引入的
-# target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/utils.h)
-
-
+# target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 
