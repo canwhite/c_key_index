@@ -16,7 +16,7 @@ link_directories(${CMAKE_SOURCE_DIR}/utils/lib)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(UTIL_STATIC REQUIRED util_static)
-
+pkg_check_modules(CURL REQUIRED libcurl)
 
 # 添加一个可执行文件的目标，名字是 MyProject，源代码文件是 SOURCE_FILES 变量存储的文件。
 add_executable(${APP_NAME} ${SOURCE_FILES})
@@ -25,6 +25,9 @@ add_executable(${APP_NAME} ${SOURCE_FILES})
 target_include_directories(${APP_NAME} PRIVATE ${UTIL_STATIC_INCLUDE_DIRS})
 target_link_libraries(${APP_NAME} ${UTIL_STATIC_LIBRARIES})
 
+#include_directories在整个CMakeLists.txt文件中设置一个全局变量，所有的目标都能找到头文件。
+include_directories(${CURL_INCLUDE_DIRS})
+target_link_libraries(${APP_NAME} ${CURL_LIBRARIES})
 
 
 # ---使用静态库
