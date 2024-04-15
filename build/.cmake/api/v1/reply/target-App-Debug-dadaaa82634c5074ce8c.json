@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"link_directories",
 			"target_link_libraries",
 			"target_include_directories"
 		],
@@ -26,19 +27,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 12,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 24,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
@@ -55,8 +62,8 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
-					"path" : "/Users/zack/Desktop/c_key_index/utils"
+					"backtrace" : 4,
+					"path" : "/Users/zack/Desktop/c_key_index/utils/include"
 				}
 			],
 			"language" : "C",
@@ -81,7 +88,16 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "/Users/zack/Desktop/c_key_index/utils/libutil_static.a",
+				"fragment" : "-L/Users/zack/Desktop/c_key_index/utils/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/Users/zack/Desktop/c_key_index/utils/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lutil_static",
 				"role" : "libraries"
 			}
 		],

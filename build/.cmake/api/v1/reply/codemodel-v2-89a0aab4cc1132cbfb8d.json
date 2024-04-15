@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "App::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-App-Debug-16cc6876d0332092bbff.json",
+					"jsonFile" : "target-App-Debug-dadaaa82634c5074ce8c.json",
 					"name" : "App",
 					"projectIndex" : 0
 				}
@@ -55,6 +55,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 7
 	}
 }
