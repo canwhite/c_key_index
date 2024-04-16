@@ -1,4 +1,4 @@
-prefix=.
+prefix=/Users/zack/Desktop/c_key_index/utils
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
