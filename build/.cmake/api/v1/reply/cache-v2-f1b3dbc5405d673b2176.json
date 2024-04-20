@@ -383,7 +383,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/opt/homebrew/Cellar/cmake/3.29.0/bin/ccmake"
+			"value" : "/opt/homebrew/Cellar/cmake/3.27.3/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -631,7 +631,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/opt/homebrew/bin/ninja"
+			"value" : "/usr/local/bin/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -2047,7 +2047,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "REQUIRED;IMPORTED_TARGET;libcurl"
+			"value" : "REQUIRED;libcurl"
 		},
 		{
 			"name" : "__pkg_config_arguments_UTIL_STATIC",
@@ -2059,7 +2059,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "REQUIRED;IMPORTED_TARGET;util_static"
+			"value" : "REQUIRED;util_static"
 		},
 		{
 			"name" : "__pkg_config_checked_CURL",
@@ -2115,7 +2115,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/Users/zack/Desktop/c_key_index/utils/lib/libutil_static.dylib"
+			"value" : "/Users/zack/Desktop/c_key_index/utils/lib/libutil_static.a"
 		},
 		{
 			"name" : "prefix_result",
@@ -2127,7 +2127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/zack/Desktop/c_key_index/utils/lib"
+			"value" : "/usr/lib"
 		}
 	],
 	"kind" : "cache",

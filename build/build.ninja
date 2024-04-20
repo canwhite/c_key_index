@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_App: phony || .
 build CMakeFiles/App.dir/start.c.o: C_COMPILER__App_unscanned_Debug /Users/zack/Desktop/c_key_index/start.c || cmake_object_order_depends_target_App
   DEP_FILE = CMakeFiles/App.dir/start.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  INCLUDES = -isystem /Users/zack/Desktop/c_key_index/utils/include
+  INCLUDES = -I/Users/zack/Desktop/c_key_index/utils/include
   OBJECT_DIR = CMakeFiles/App.dir
   OBJECT_FILE_DIR = CMakeFiles/App.dir
 
@@ -64,9 +64,10 @@ build CMakeFiles/App.dir/start.c.o: C_COMPILER__App_unscanned_Debug /Users/zack/
 #############################################
 # Link the executable App
 
-build App: C_EXECUTABLE_LINKER__App_Debug CMakeFiles/App.dir/start.c.o | /Users/zack/Desktop/c_key_index/utils/lib/libutil_static.dylib
+build App: C_EXECUTABLE_LINKER__App_Debug CMakeFiles/App.dir/start.c.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  LINK_LIBRARIES = -Wl,-rpath,/Users/zack/Desktop/c_key_index/utils/lib  /Users/zack/Desktop/c_key_index/utils/lib/libutil_static.dylib
+  LINK_LIBRARIES = -Wl,-rpath,/Users/zack/Desktop/c_key_index/utils/lib  -lutil_static  -lcurl
+  LINK_PATH = -L/Users/zack/Desktop/c_key_index/utils/lib
   OBJECT_DIR = CMakeFiles/App.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -78,7 +79,7 @@ build App: C_EXECUTABLE_LINKER__App_Debug CMakeFiles/App.dir/start.c.o | /Users/
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/zack/Desktop/c_key_index/build && /opt/homebrew/Cellar/cmake/3.29.0/bin/ccmake -S/Users/zack/Desktop/c_key_index -B/Users/zack/Desktop/c_key_index/build
+  COMMAND = cd /Users/zack/Desktop/c_key_index/build && /opt/homebrew/Cellar/cmake/3.27.3/bin/ccmake -S/Users/zack/Desktop/c_key_index -B/Users/zack/Desktop/c_key_index/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1

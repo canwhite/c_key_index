@@ -11,16 +11,13 @@
 		"commands" : 
 		[
 			"add_executable",
-			"set_property",
-			"_pkg_create_imp_target",
-			"_pkg_recalculate",
-			"pkg_check_modules",
-			"target_link_libraries"
+			"link_directories",
+			"target_link_libraries",
+			"target_include_directories"
 		],
 		"files" : 
 		[
-			"CMakeLists.txt",
-			"/opt/homebrew/Cellar/cmake/3.29.0/share/cmake/Modules/FindPkgConfig.cmake"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -30,37 +27,31 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 28,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
-				"command" : 4,
+				"command" : 1,
 				"file" : 0,
-				"line" : 27,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 30,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
-				"file" : 1,
-				"line" : 855,
-				"parent" : 2
-			},
-			{
-				"command" : 2,
-				"file" : 1,
-				"line" : 339,
-				"parent" : 3
-			},
-			{
-				"command" : 1,
-				"file" : 1,
-				"line" : 320,
-				"parent" : 4
-			},
-			{
-				"command" : 5,
 				"file" : 0,
-				"line" : 29,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
@@ -77,8 +68,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 6,
-					"isSystem" : true,
+					"backtrace" : 5,
 					"path" : "/Users/zack/Desktop/c_key_index/utils/include"
 				}
 			],
@@ -103,12 +93,22 @@
 				"role" : "flags"
 			},
 			{
+				"backtrace" : 2,
+				"fragment" : "-L/Users/zack/Desktop/c_key_index/utils/lib",
+				"role" : "libraryPath"
+			},
+			{
 				"fragment" : "-Wl,-rpath,/Users/zack/Desktop/c_key_index/utils/lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 5,
-				"fragment" : "/Users/zack/Desktop/c_key_index/utils/lib/libutil_static.dylib",
+				"backtrace" : 3,
+				"fragment" : "-lutil_static",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lcurl",
 				"role" : "libraries"
 			}
 		],

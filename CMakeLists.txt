@@ -5,53 +5,31 @@ cmake_minimum_required(VERSION 3.10)
 set(APP_NAME "App")
 project(${APP_NAME}) 
 
+# 通过set整合要编译的执行文件，utils.c是你编写的util库的主要源文件，utils.h在start中引入
+# set(SOURCE_FILES start.c utils/utils.c) 
 set(SOURCE_FILES start.c)
 
-# ----------------自写静态库的引入使用----------------
-# pre: 手动和目标导入都需要，因为是我们自己实现的静态库，不在系统默认查找位置，
-# 所以：注意指定有pc的相对路径，这就需要我们环境变量里导出PKG_CONFIG_PATH
+# 注意指定有pc的相对路径，这就需要我们环境变量里导出PKG_CONFIG_PATH
 set(ENV{PKG_CONFIG_PATH} "${CMAKE_SOURCE_DIR}/utils")
+# 因为非常用预设路径如/usr/lib或/usr/local/lib，所以我们这里手动链接一下我们的库地址
+link_directories(${CMAKE_SOURCE_DIR}/utils/lib)
 
-# 1. 手动版---pc文件中prefix可以使用.相对位置
-
-# link_directories(${CMAKE_SOURCE_DIR}/utils/lib)
-# # 整体来说，这种全局的容错性更强
-# include_directories(${CMAKE_SOURCE_DIR}/utils/include)
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(UTIL_STATIC REQUIRED  util_static)
-# add_executable(${APP_NAME} ${SOURCE_FILES}) 
-# target_link_libraries(${APP_NAME} ${UTIL_STATIC_LIBRARIES})
-
-# 2.导入目标版(推荐)---pc文件中prefix要用绝对位置
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(UTIL_STATIC REQUIRED IMPORTED_TARGET util_static)
-add_executable(${APP_NAME} ${SOURCE_FILES}) 
-target_link_libraries(${APP_NAME} PkgConfig::UTIL_STATIC)
+pkg_check_modules(UTIL_STATIC REQUIRED util_static)
+pkg_check_modules(CURL REQUIRED libcurl)
+
+# 添加一个可执行文件的目标，名字是 MyProject，源代码文件是 SOURCE_FILES 变量存储的文件。
+add_executable(${APP_NAME} ${SOURCE_FILES})
+
+#往可执行文件上添加，所以tarhet，并使用pkg-config内部变量
+target_include_directories(${APP_NAME} PRIVATE ${UTIL_STATIC_INCLUDE_DIRS})
+target_link_libraries(${APP_NAME} ${UTIL_STATIC_LIBRARIES})
+
+#include_directories在整个CMakeLists.txt文件中设置一个全局变量，所有的目标都能找到头文件。
+include_directories(${CURL_INCLUDE_DIRS})
+target_link_libraries(${APP_NAME} ${CURL_LIBRARIES})
 
 
-# ----------------系统库的引入使用----------------
-
-# 1.curl引入方法一，手动导入
-
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(CURL REQUIRED libcurl)
-# add_executable(${APP_NAME} ${SOURCE_FILES})
-# #注意include_directories 是全局引入的意思，系统库一般用它，以便其他库也能发现它的.h文件
-# include_directories(${CURL_INCLUDE_DIRS}) 
-# target_link_libraries(${APP_NAME} ${CURL_LIBRARIES})
-
-
-
-# 2.curl引入方法二，导入目标导入（推荐）
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(CURL REQUIRED IMPORTED_TARGET libcurl)
-# add_executable(${APP_NAME} ${SOURCE_FILES})
-# target_link_libraries(${APP_NAME} PkgConfig::CURL)
-
-
-
-
-# ------------传统方式使用静态库和动态库----------------------
 # ---使用静态库
 # # 添加静态包执行静态和IMPORTED
 # add_library(util_static STATIC IMPORTED)
